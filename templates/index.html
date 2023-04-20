@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Manager</title>
+
+{% endblock %}
+
+{% block body %}
+
+<form action="/signin" method="POST">
+    <label>Enter your name:</label>
+    <input type="text" name="username">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+{% endblock %}

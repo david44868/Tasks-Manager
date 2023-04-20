@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Manager</title>
+
+{% endblock %}
+
+{% block body %}
+<h1>Tasks</h1>
+<a href="{{ url_for('add_tasks') }}"><button>Add Task</button></a>
+<a href="{{ url_for('logout') }}"><button>Logout</button></a>
+{% for task in tasks %}
+<div>
+    <h2>{{ task.title }}</h2>
+    <p>Description: {{ task.description }}</p>
+    <p>Status: {{ task.status }}</p>
+    <p>Due Date: {{ task.due_date }}</p>
+</div>
+{% endfor %}
+{% endblock %}

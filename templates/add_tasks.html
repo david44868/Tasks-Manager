@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Manager</title>
+
+{% endblock %}
+
+{% block body %}
+
+<form id="task" action="/get_db" method="POST" autocomplete="off">
+    <label>Title:</label>
+    <input required type="text" name="title">
+    <label>Description:</label>
+    <input required type="text" name="description">
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+    <label>Due Date:</label>
+    <input required type="date" name="due_date">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+{% endblock %}
