@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import pymysql
+import mysql.connector
+
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -70,12 +72,13 @@ def get_db():
 
 def get_connection():
     # Establish a connection to the database
-    conn = pymysql.connect(
-        host='127.0.0.1',
-        user='root',
-        password='',
-        db='tasks_db',
-        cursorclass = pymysql.cursors.DictCursor # Access query results by column name
+    conn = mysql.connector.connect(
+        host='aws.connect.psdb.cloud',
+        user='jbysm1owp7x1qo5yx57r',
+        password='pscale_pw_lBAseeuJ32NHF8djVS2Z7JVPXMsGWgEkZss8dNkCPDb',
+        database='tasks_db',
+        ssl_ca = "/etc/ssl/cert.pem",
+        #cursorclass = pymysql.cursors.DictCursor # Access query results by column name
     )
     return conn
 
@@ -86,7 +89,7 @@ def tasks():
             sql = "SELECT user_id FROM users WHERE username = %s"
             cursor.execute(sql, (session['username'],))
             result = cursor.fetchone()
-            user_id = result['user_id']
+            user_id = result[0]
             
             sql = "SELECT * FROM tasks WHERE user_id = %s"
             cursor.execute(sql, (user_id,))

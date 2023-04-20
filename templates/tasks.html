@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>Tasks</h1>
+<h1>{{session['username']}}'s Tasks</h1>
 <a href="{{ url_for('add_tasks') }}"><button>Add Task</button></a>
 <a href="{{ url_for('logout') }}"><button>Logout</button></a>
 {% for task in tasks %}
