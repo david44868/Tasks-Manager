@@ -61,7 +61,7 @@ def get_db():
             sql = "SELECT user_id FROM users WHERE username = %s"
             cursor.execute(sql, (session['username'],))
             result = cursor.fetchone()
-            user_id = result['user_id']
+            user_id = result[0]
 
             sql = "INSERT INTO tasks (user_id, title, description, status, due_date) VALUES (%s, %s, %s, %s, %s)"
             cursor.execute(sql, (user_id, title, description, status, due_date))
@@ -74,11 +74,11 @@ def get_connection():
     # Establish a connection to the database
     conn = mysql.connector.connect(
         host='aws.connect.psdb.cloud',
-        user='jbysm1owp7x1qo5yx57r',
-        password='pscale_pw_lBAseeuJ32NHF8djVS2Z7JVPXMsGWgEkZss8dNkCPDb',
+        user='laty0b6ey3o4h1bttk6p',
+        password='pscale_pw_JVMNPpDcWL5BHuIxQW2NRtBTYDUmfMJko7q07U3IHUD',
         database='tasks_db',
         ssl_ca = "/etc/ssl/cert.pem",
-        #cursorclass = pymysql.cursors.DictCursor # Access query results by column name
+        #cursorclass = pymysql.cursors.DictCursor
     )
     return conn
 

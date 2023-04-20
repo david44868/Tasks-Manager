@@ -11,10 +11,10 @@
 <a href="{{ url_for('logout') }}"><button>Logout</button></a>
 {% for task in tasks %}
 <div>
-    <h2>{{ task.title }}</h2>
-    <p>Description: {{ task.description }}</p>
-    <p>Status: {{ task.status }}</p>
-    <p>Due Date: {{ task.due_date }}</p>
+    <h2>{{ task[2] }}</h2>
+    <p>Description: {{ task[3] }}</p>
+    <p>Status: {{ task[4] }}</p>
+    <p>Due Date: {{ task[5] }}</p>
 </div>
 {% endfor %}
 {% endblock %}
