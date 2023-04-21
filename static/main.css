@@ -1,0 +1,24 @@
+.sort {
+    background-color: light gray;
+    color: black;
+}
+
+.active {
+    background-color: green;
+    color: white;
+}
+
+.completed {
+    color: green;
+    font-weight: bold;
+}
+
+.incomplete {
+    color: red;
+    font-weight: bold;
+}
+
+.partial {
+    color: orange;
+    font-weight: bold;
+}

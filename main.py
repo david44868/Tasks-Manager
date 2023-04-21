@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, session, redirect, url_for
-import pymysql
+from flask import Flask, flash, render_template, request, session, redirect, url_for
 import mysql.connector
 
 
@@ -74,12 +73,10 @@ def get_connection():
     # Establish a connection to the database
     conn = mysql.connector.connect(
         host='aws.connect.psdb.cloud',
-        user='unucbjkd30hsnk3pz52m',
-        password='pscale_pw_ifzUUtQx29VAiuQnZmijFqCTTpVc7DHm0x63f62EyBO',
+        user='np9dvfbwpijlzt7ckahv',
+        password='pscale_pw_pMzvBHkvwpGlaOVJlzWISVVCPZYQWdlLxDyQFRknkH1',
         database='tasks_db',
         ssl_ca = "/etc/ssl/cert.pem",
-        
-        #cursorclass = pymysql.cursors.DictCursor
     )
     return conn
 
@@ -95,7 +92,6 @@ def tasks():
             sql = "SELECT * FROM tasks WHERE user_id = %s"
             cursor.execute(sql, (user_id,))
             tasks = cursor.fetchall()
-
         return render_template('tasks.html', tasks=tasks)
     else:
         return render_template('index.html')
@@ -113,7 +109,20 @@ def sort():
             sql = f"SELECT * FROM tasks WHERE user_id = %s ORDER BY {sort}"
             cursor.execute(sql, (user_id,))
             tasks = cursor.fetchall()
-        return render_template('tasks.html', tasks=tasks)
+        return render_template('tasks.html', tasks=tasks, sort=sort)
+    else:
+        return render_template('index.html')
+
+@app.route('/delete')  
+def delete():
+    if 'username' in session:
+        with get_connection() as conn, conn.cursor() as cursor:
+            task_id = request.args.get('task_id')
+            sql = f"DELETE FROM tasks WHERE task_id = {task_id}"
+            cursor.execute(sql)
+            conn.commit()
+        flash('Task has been deleted')
+        return tasks()
     else:
         return render_template('index.html')
 
