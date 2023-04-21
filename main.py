@@ -74,8 +74,8 @@ def get_connection():
     # Establish a connection to the database
     conn = mysql.connector.connect(
         host='aws.connect.psdb.cloud',
-        user='igsmntjrbaguthodb6uc',
-        password='pscale_pw_CDaSfKpFCSfgmkV7NSA0vCoAFkruicoyZjSUu47yaMt',
+        user='wovribllcw74ky2k67sp',
+        password='pscale_pw_x6WuKZBKCteHbd756AiF3jzYXxVoDwZSJhLHSUFVjN8',
         database='tasks_db',
         ssl_ca = "/etc/ssl/cert.pem",
         #cursorclass = pymysql.cursors.DictCursor
