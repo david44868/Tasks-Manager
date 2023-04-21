@@ -74,8 +74,8 @@ def get_connection():
     # Establish a connection to the database
     conn = mysql.connector.connect(
         host='aws.connect.psdb.cloud',
-        user='laty0b6ey3o4h1bttk6p',
-        password='pscale_pw_JVMNPpDcWL5BHuIxQW2NRtBTYDUmfMJko7q07U3IHUD',
+        user='igsmntjrbaguthodb6uc',
+        password='pscale_pw_CDaSfKpFCSfgmkV7NSA0vCoAFkruicoyZjSUu47yaMt',
         database='tasks_db',
         ssl_ca = "/etc/ssl/cert.pem",
         #cursorclass = pymysql.cursors.DictCursor
@@ -95,6 +95,23 @@ def tasks():
             cursor.execute(sql, (user_id,))
             tasks = cursor.fetchall()
 
+        return render_template('tasks.html', tasks=tasks)
+    else:
+        return render_template('index.html')
+
+@app.route('/sort')
+def sort():
+    if 'username' in session:
+        with get_connection() as conn, conn.cursor() as cursor:
+            sql = "SELECT user_id FROM users WHERE username = %s"
+            cursor.execute(sql, (session['username'],))
+            result = cursor.fetchone()
+            user_id = result[0]
+
+            sort = request.args.get('sort')
+            sql = f"SELECT * FROM tasks WHERE user_id = %s ORDER BY {sort}"
+            cursor.execute(sql, (user_id,))
+            tasks = cursor.fetchall()
         return render_template('tasks.html', tasks=tasks)
     else:
         return render_template('index.html')
