@@ -7,21 +7,29 @@
 
 {% block body %}
 
-<form id="task" action="/get_db" method="POST" autocomplete="off">
-    <label>Title:</label>
-    <input required type="text" name="title">
-    <label>Description:</label>
-    <input required type="text" name="description">
-    <label for="status">Status:</label>
-    <select id="status" name="status">
-        <option value="Not Started">Not Started</option>
-        <option value="In Progress">In Progress</option>
-        <option value="Completed">Completed</option>
-    </select>
-    <label>Due Date:</label>
-    <input required type="date" name="due_date">
-    <br>
-    <button type="submit">Submit</button>
-  </form>
+<div class="container" id="length">
+    <h1 id="heading">Add a New Task</h1>
+    <form id="task" action="/get_db" method="POST" autocomplete="off">
+        <label class="label_title">Title:</label>
+        <input required type="text" name="title" placeholder="title">
+        <label class="label_title">Description:</label>
+        <input required type="text" name="description" placeholder="description">
+        <div id="hbox">
+            <div>
+                <label class="small" for="status">Status:</label>
+                <select class="input_box" id="status" name="status">
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
+            <div>
+                <label class="small">Due Date:</label>
+                <input class="input_box" required type="date" name="due_date">
+            </div>     
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
 {% endblock %}

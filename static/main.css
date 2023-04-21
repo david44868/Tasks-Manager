@@ -179,3 +179,45 @@ p.font span.incomplete {
 #add:hover{
     background-color: green;
 }
+
+.label_title {
+    display: block;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 10px;
+    font-family:monospace;
+}
+
+#heading {
+    font-family:monospace;
+    font-size: 40px;
+    color: #45a049;
+}
+
+.small {
+    font-family:monospace;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#hbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+#length {
+    width: 35%;
+}
+
+.input_box {
+    border-radius: 4px;
+    font-family:monospace;
+    font-size: 20px;
+}
