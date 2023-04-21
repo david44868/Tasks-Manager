@@ -7,11 +7,14 @@
 
 {% block body %}
 
-<form action="/signin" method="POST">
-    <label>Login:</label>
-    <input type="text" name="username">
-    <br>
-    <button type="submit">Submit</button>
-  </form>
+<div class="container">
+    <img id="logo" src="../static/task_logo.png">
+    <form action="/signin" method="POST">
+        <label id="login">Login</label>
+        <input required type="text" name="username" placeholder="username">
+        <br>
+        <button type="submit">LOGIN</button>
+    </form>
+</div>
 
 {% endblock %}
