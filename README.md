@@ -1,6 +1,6 @@
 # Tasks-Manager
 
-LIGHTHALL LEVEL 2 CHALLENGE
+## LIGHTHALL LEVEL 2 CHALLENGE
 
 Get Organized with a Task Tracker App
 
